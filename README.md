@@ -17,4 +17,4 @@ The message appears when fields are empty:
 
 ![image](https://github.com/user-attachments/assets/4afe9bc5-4c02-4852-b864-18e78b53ce06)
 
-## 4 - додано в if цикл for, який фіксує всі неправильно введені дані і в сукупності виводить повідомлення.
+## 4 - a for loop has been added to if, which captures all incorrectly entered data and displays a message in total.
