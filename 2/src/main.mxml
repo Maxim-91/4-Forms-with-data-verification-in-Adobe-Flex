@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute" height="430">
+<mx:Form x="44" y="0" width="420" height="420">
+ <mx:FormItem label="Имя" required="true">
+ 	<mx:TextInput id="fname"/>
+ </mx:FormItem>
+ <mx:FormItem label="Фамилия" required="false">
+ 	<mx:TextInput id="sname"/>
+ </mx:FormItem> 
+ <mx:HRule width="254" height="1"/>
+ 
+ <mx:FormItem label="Возраст">
+ 	<mx:NumericStepper id="ns1" maximum="100" value="10"/>
+ </mx:FormItem>  
+ <mx:HRule width="254"/>
+ <mx:FormItem>
+ 	<mx:HBox width="161">
+ 	</mx:HBox>
+ </mx:FormItem>
+ <mx:FormItem label="Любимый цвет">
+ 	<mx:ColorPicker/>
+ </mx:FormItem>   
+ <mx:FormItem label="Телефон для связи" height="115">
+ 	<mx:Canvas width="200" height="123">
+ 		<mx:RadioButtonGroup id="rg2"/>
+ 		<mx:RadioButton x="20" y="10" label="Мобильный" groupName="radiogroup2" selected="true"/>
+ 		<mx:RadioButton x="20" y="31" label="Домашний" groupName="radiogroup2"/>
+ 		<mx:RadioButton x="20" y="53" label="Рабочий" groupName="radiogroup2"/>
+ 		<mx:TextInput x="20" y="83" id="phone"/>
+ 	</mx:Canvas>
+ </mx:FormItem> 
+ <mx:FormItem label="Дата народження">
+ 	<mx:DateField editable="true"/> 	
+ </mx:FormItem>
+ <mx:FormItem label="e-mail" required="true">
+ 	<mx:TextInput id="emailAdress"/>
+ </mx:FormItem> 
+ <mx:FormItem label="Адрес">
+ 	<mx:TextInput/>
+ </mx:FormItem>
+ <mx:FormItem label="Старт">
+ 	<mx:Button label="Старт" id="myButton" click="my()"/>
+ </mx:FormItem>
+</mx:Form>
+<mx:StringValidator id="v1" property="text" source="{fname}" requiredFieldError="Введіть ім'я!&#13;Ви ж маєте ім'я?"/>
+<mx:StringValidator id="v2" property="text" source="{sname}" minLength="2" required="false" tooShortError="Введіть правильне прізвище!"/>
+<mx:EmailValidator id="v3" property="text" source="{emailAdress}" requiredFieldError="Введіть свою поштову адресу" missingAtSignError="В ваші поштовій адресі не вистачає знака собаки (@)" trigger="{myButton}" triggerEvent="click"/>
+<mx:PhoneNumberValidator id="v4" source="{phone}" property="text" required="false"/>
+<mx:Script>
+	<![CDATA[
+		import mx.validators.Validator;
+		private function my():void
+		{
+		 var validators:Array = [v1,v2,v3,v4];
+		 Validator.validateAll(validators);
+		}
+	]]>
+</mx:Script>
+</mx:Application>
